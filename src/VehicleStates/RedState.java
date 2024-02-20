@@ -10,6 +10,8 @@ public class RedState extends State {
 
         System.out.println("RED");
 
+
+        CrossWalkSimulation.timeout(1000);
         CrossWalkSimulation.setState(new pedestriansWalk());
 
     }

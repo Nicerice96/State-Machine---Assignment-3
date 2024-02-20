@@ -1,7 +1,6 @@
 package Main;
 
 import CrossWalkStates.State;
-import VehicleStates.GreenState;
 
 import javax.naming.*;
 import javax.naming.Context;
@@ -18,7 +17,16 @@ public class CrossWalkSimulation implements Context {
 
     CrossWalkSimulation(State state){
 
-        this.state = state;
+        CrossWalkSimulation.state = state;
+
+    }
+
+    public static long setTimer(int End){
+        long startTime = System.currentTimeMillis();
+        long endTime = startTime + End;
+
+        long end = endTime-startTime;
+        return end;
 
     }
 
@@ -27,47 +35,28 @@ public class CrossWalkSimulation implements Context {
         try {
             Thread.sleep(time);
         }
-        catch(Exception e){
-            System.out.println(e);
+        catch(Exception ignored){
+
         }
 
     }
 
     public static void signalPedestrians(boolean flag) {
         if (flag) {
-            System.out.println("WALK LIGHT ON");
-            try {
-                Thread.sleep(1000);
-            }
-            catch (InterruptedException e){
+            System.out.println("FLASH WALK LIGHT");
+            CrossWalkSimulation.timeout(15000);
 
-            }
         }
         else{
-            System.out.println("DONT WALK LIGHT ON");
-
-            try {
-                Thread.sleep(1000);
-            }
-            catch (InterruptedException e){
-
-            }
-
-            System.out.println("DONT WALK LIGHT OFF");
-
-            try {
-                Thread.sleep(1000);
-            }
-            catch (InterruptedException e){
-
-            }
+            System.out.println("FLASH DONT WALK LIGHT");
+            CrossWalkSimulation.timeout(1000);
         }
     }
 
 
 
-    public static boolean setPedestrianWaiting(Boolean buttonPushed){
-        return CrossWalkSimulation.buttonPushed = buttonPushed;
+    public static void setPedestrianWaiting(Boolean buttonPushed){
+        CrossWalkSimulation.buttonPushed = buttonPushed;
     }
 
     public static void setState(State state){
@@ -82,7 +71,7 @@ public class CrossWalkSimulation implements Context {
 
         Thread pedestrian = new Thread(new Pedestrian());
         pedestrian.start();
-        CrossWalkSimulation.setState(new GreenState());
+        CrossWalkSimulation.setState(new VehiclesEnabled());
 
 
 

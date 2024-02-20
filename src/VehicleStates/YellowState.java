@@ -7,6 +7,7 @@ public class YellowState extends State {
     @Override
     public void handleEvent() {
 
+
         System.out.println("YELLOW");
 
         CrossWalkSimulation.timeout(3000);

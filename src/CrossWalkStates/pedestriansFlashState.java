@@ -7,9 +7,8 @@ public class pedestriansFlashState extends State {
     @Override
     public void handleEvent() {
 
+
         int pedestrianFlashCtr = 7;
-
-
 
         while (pedestrianFlashCtr > 0){
 
@@ -19,31 +18,17 @@ public class pedestriansFlashState extends State {
 
                 CrossWalkSimulation.signalPedestrians(false);
 
-
             }
+
+
 
             pedestrianFlashCtr--;
 
-
-
-
         }
 
+        CrossWalkSimulation.timeout(1000);
 
-        try{
-
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
         CrossWalkSimulation.setState(new GreenState());
-
-
-
-
-
-
-
 
 
     }

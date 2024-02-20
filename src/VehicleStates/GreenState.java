@@ -7,7 +7,7 @@ import Main.CrossWalkSimulation;
 public class GreenState extends State {
     @Override
     public void handleEvent() {
-        System.out.println(CrossWalkSimulation.buttonPushed);
+        System.out.println("Are pedestrians waiting?: " + CrossWalkSimulation.buttonPushed);
 
 
         System.out.println("GREEN");
@@ -27,14 +27,13 @@ public class GreenState extends State {
                 System.out.println("Traffic Light notified that Pedestrians are waiting");
 
                 CrossWalkSimulation.setPedestrianWaiting(false);
+
                 CrossWalkSimulation.timeout(10000);
                 CrossWalkSimulation.setState(new YellowState());
-                return; // Exit the method to avoid further processing
+                return;
             }
         }
 
-        // If 10 seconds have elapsed without pedestrians waiting, transition to VehicleStates.YellowState
-        CrossWalkSimulation.timeout(10000);
-        CrossWalkSimulation.setState(new YellowState());
+        CrossWalkSimulation.setState(new vehiclesGreenInt());
     }
 }

@@ -12,8 +12,8 @@ public class Pedestrian implements Runnable{
             System.out.println(e);
         }
 
-        System.out.println("Pedestrian Pressed a Button");
-        System.out.println(CrossWalkSimulation.setPedestrianWaiting(true));
+        CrossWalkSimulation.setPedestrianWaiting(true);
+        System.out.println("A Pedestrian has pressed the button, Pedestrian is Waiting");
 
     }
 }
