@@ -1,7 +1,6 @@
 package VehicleStates;
 
 import CrossWalkStates.State;
-import Main.Context;
 import Main.CrossWalkSimulation;
 
 public class GreenState extends State {
@@ -12,28 +11,17 @@ public class GreenState extends State {
 
         System.out.println("GREEN");
 
-
-        long startTime = System.currentTimeMillis();
-        long endTime = startTime + 20000;
+        CrossWalkSimulation.setTimer(20000);
 
         // Loop until 10 seconds have elapsed or pedestrians start waiting
-        while (System.currentTimeMillis() < endTime) {
+        while (System.currentTimeMillis() < CrossWalkSimulation.time) {
 
+            CrossWalkSimulation.setState(new vehiclesGreenInt());
 
-
-            // Check if pedestrians are waiting
-            if (CrossWalkSimulation.buttonPushed) {
-
-                System.out.println("Traffic Light notified that Pedestrians are waiting");
-
-                CrossWalkSimulation.setPedestrianWaiting(false);
-
-                CrossWalkSimulation.timeout(10000);
-                CrossWalkSimulation.setState(new YellowState());
-                return;
-            }
         }
 
-        CrossWalkSimulation.setState(new vehiclesGreenInt());
+        CrossWalkSimulation.setState(new YellowState());
+
+
     }
 }

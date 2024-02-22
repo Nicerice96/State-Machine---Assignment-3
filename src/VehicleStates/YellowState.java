@@ -10,7 +10,14 @@ public class YellowState extends State {
 
         System.out.println("YELLOW");
 
-        CrossWalkSimulation.timeout(3000);
+        try{
+            Thread.sleep(3000);
+        }
+        catch (Exception e)
+        {
+
+        }
+
 
         CrossWalkSimulation.setState(new RedState());
 

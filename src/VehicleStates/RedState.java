@@ -11,7 +11,14 @@ public class RedState extends State {
         System.out.println("RED");
 
 
-        CrossWalkSimulation.timeout(1000);
+        try{
+            Thread.sleep(1000);
+        }
+        catch (Exception e)
+        {
+
+        }
+
         CrossWalkSimulation.setState(new pedestriansWalk());
 
     }

@@ -26,7 +26,14 @@ public class pedestriansFlashState extends State {
 
         }
 
-        CrossWalkSimulation.timeout(1000);
+        try{
+            Thread.sleep(1000);
+        }
+        catch (Exception e)
+        {
+
+        }
+
 
         CrossWalkSimulation.setState(new GreenState());
 

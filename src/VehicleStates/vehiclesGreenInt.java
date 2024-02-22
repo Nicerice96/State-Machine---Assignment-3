@@ -9,9 +9,23 @@ public class vehiclesGreenInt extends State {
 
 
 
-        // If 20 seconds have elapsed without pedestrians waiting, transition to VehicleStates.YellowState
-        CrossWalkSimulation.timeout(10000);
-        CrossWalkSimulation.setState(new YellowState());
+        // Check if pedestrians are waiting
+        if (CrossWalkSimulation.buttonPushed) {
+
+            System.out.println("Traffic Light notified that Pedestrians are waiting");
+
+            CrossWalkSimulation.buttonPushed = false;
+
+            try{
+                Thread.sleep(15000);
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            CrossWalkSimulation.setState(new YellowState());
+        }
 
     }
 }

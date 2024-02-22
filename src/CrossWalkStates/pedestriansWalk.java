@@ -7,11 +7,25 @@ public class pedestriansWalk extends State {
     public void handleEvent() {
 
 
-        CrossWalkSimulation.timeout(1000);
+        try{
+            Thread.sleep(1000);
+        }
+        catch (Exception e)
+        {
+
+        }
+
 
         CrossWalkSimulation.signalPedestrians(true);
 
-        CrossWalkSimulation.timeout(1000);
+        try{
+            Thread.sleep(1000);
+        }
+        catch (Exception e)
+        {
+
+        }
+
 
         CrossWalkSimulation.setState(new pedestriansFlashState());
 

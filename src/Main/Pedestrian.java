@@ -1,6 +1,13 @@
 package Main;
 
 public class Pedestrian implements Runnable{
+
+
+    Pedestrian(){}
+
+
+
+
     @Override
     public void run() {
 
@@ -12,8 +19,9 @@ public class Pedestrian implements Runnable{
             System.out.println(e);
         }
 
+
         CrossWalkSimulation.setPedestrianWaiting(true);
-        System.out.println("A Pedestrian has pressed the button, Pedestrian is Waiting");
+
 
     }
 }
