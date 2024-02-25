@@ -2,46 +2,48 @@ package Main;
 
 import CrossWalkStates.State;
 
-public class CrossWalkSimulation implements context {
+import java.util.HashMap;
+
+public class CrossWalkSimulation implements Context {
 
 
-    private static State state;
-
-    public static long time;
-
+    public static boolean walkLightOn = false;
+    private State state;
 
     public static volatile boolean buttonPushed;
 
 
+    CrossWalkSimulation(){
 
-
-    CrossWalkSimulation(State state){
-
-        CrossWalkSimulation.state = state;
+        this.state = new VehiclesEnabled(this);
         state.handleEvent();
-
     }
 
-    public static void setTimer(long time){
+    public boolean setTimer(long time){
         long startTime = System.currentTimeMillis();
         long endTime = startTime + time;
 
-        CrossWalkSimulation.time = endTime;
-    }
+        while (System.currentTimeMillis() < endTime){
 
 
+        }
 
-    public boolean timeout(int time){
+        if (pedestrianWaiting()){
 
-        while (System.currentTimeMillis() > time){
             return true;
         }
-            return false;
+
+        System.out.println("Timer has finished!");
+
+        return false;
+
 
     }
+
 
     public static void signalPedestrians(boolean flag) {
         if (flag) {
+            CrossWalkSimulation.walkLightOn = true;
             System.out.println("FLASH WALK LIGHT");
             try{
                 Thread.sleep(15000);
@@ -53,6 +55,7 @@ public class CrossWalkSimulation implements context {
 
         }
         else{
+            CrossWalkSimulation.walkLightOn = false;
             System.out.println("FLASH DONT WALK LIGHT");
             try{
                 Thread.sleep(1000);
@@ -65,38 +68,21 @@ public class CrossWalkSimulation implements context {
         }
     }
 
-    @Override
-    public boolean pedestrianWaiting() {
-        return CrossWalkSimulation.buttonPushed;
-    }
+
 
     public static void setPedestrianWaiting(Boolean buttonPushed){
         CrossWalkSimulation.buttonPushed = buttonPushed;
 
     }
 
-
-    public static void setState(State state){
-
-        CrossWalkSimulation.state = state;
+    @Override
+    public void timeout(State state) {
+        this.state = state;
         state.handleEvent();
     }
 
-
-
-    public static void main (String [] args){
-
-        Thread pedestrian = new Thread(new Pedestrian());
-        pedestrian.start();
-
-        CrossWalkSimulation crossWalkSimulation = new CrossWalkSimulation(new VehiclesEnabled());
-
-
-
-
-
+    @Override
+    public boolean pedestrianWaiting() {
+        return buttonPushed;
     }
-
-
-
 }

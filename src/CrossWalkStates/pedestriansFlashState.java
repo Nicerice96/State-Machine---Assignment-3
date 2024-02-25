@@ -3,7 +3,14 @@ package CrossWalkStates;
 import Main.CrossWalkSimulation;
 import VehicleStates.GreenState;
 
-public class pedestriansFlashState extends State {
+public class pedestriansFlashState implements State {
+
+    CrossWalkSimulation crossWalkSimulation;
+
+    public pedestriansFlashState(CrossWalkSimulation crossWalkSimulation){
+
+        this.crossWalkSimulation = crossWalkSimulation;
+    }
     @Override
     public void handleEvent() {
 
@@ -35,7 +42,8 @@ public class pedestriansFlashState extends State {
         }
 
 
-        CrossWalkSimulation.setState(new GreenState());
+        crossWalkSimulation.timeout(new GreenState(this.crossWalkSimulation));
+
 
 
     }

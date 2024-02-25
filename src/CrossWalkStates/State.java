@@ -1,8 +1,9 @@
 package CrossWalkStates;
 
-public abstract class State {
+public interface State {
 
-     public abstract void handleEvent();
+
+     void handleEvent();
 
 
 }

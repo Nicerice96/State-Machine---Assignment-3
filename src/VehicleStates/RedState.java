@@ -4,7 +4,14 @@ import CrossWalkStates.State;
 import CrossWalkStates.pedestriansWalk;
 import Main.CrossWalkSimulation;
 
-public class RedState extends State {
+public class RedState implements State {
+
+    CrossWalkSimulation crossWalkSimulation;
+
+    public RedState (CrossWalkSimulation crossWalkSimulation){
+
+        this.crossWalkSimulation = crossWalkSimulation;
+    }
     @Override
     public void handleEvent() {
 
@@ -19,7 +26,7 @@ public class RedState extends State {
 
         }
 
-        CrossWalkSimulation.setState(new pedestriansWalk());
+        crossWalkSimulation.timeout(new pedestriansWalk(this.crossWalkSimulation));
 
     }
 }

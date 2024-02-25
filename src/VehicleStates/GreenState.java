@@ -1,26 +1,45 @@
 package VehicleStates;
 
 import CrossWalkStates.State;
+import Main.Context;
 import Main.CrossWalkSimulation;
 
-public class GreenState extends State {
+public class GreenState implements State {
+
+    CrossWalkSimulation crossWalkSimulation;
+
+    public GreenState(CrossWalkSimulation crossWalkSimulation){
+
+        this.crossWalkSimulation = crossWalkSimulation;
+
+
+
+    }
     @Override
     public void handleEvent() {
-        System.out.println("Are pedestrians waiting?: " + CrossWalkSimulation.buttonPushed);
 
 
         System.out.println("GREEN");
 
-        CrossWalkSimulation.setTimer(20000);
 
-        // Loop until 10 seconds have elapsed or pedestrians start waiting
-        while (System.currentTimeMillis() < CrossWalkSimulation.time) {
 
-            CrossWalkSimulation.setState(new vehiclesGreenInt());
+        while (crossWalkSimulation.setTimer(10 * 1000)){
+
+                crossWalkSimulation.timeout(new vehiclesGreenInt(this.crossWalkSimulation));
+
 
         }
 
-        CrossWalkSimulation.setState(new YellowState());
+        System.out.println("No pedestrians");
+
+
+        try{
+            Thread.sleep(15 * 1000);
+        }catch(InterruptedException e){
+            System.out.println(e);
+        }
+
+       crossWalkSimulation.timeout(new YellowState(this.crossWalkSimulation));
 
 
     }
