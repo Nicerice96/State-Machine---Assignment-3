@@ -3,14 +3,27 @@ package CrossWalkStates;
 import Main.CrossWalkSimulation;
 import VehicleStates.GreenState;
 
+/**
+ * performs the actions of the pedestrian Light
+ */
+
 public class pedestriansFlashState implements State {
 
     CrossWalkSimulation crossWalkSimulation;
+
+    /**
+     * pedestrianFlashState Constructor
+     * @param crossWalkSimulation
+     */
 
     public pedestriansFlashState(CrossWalkSimulation crossWalkSimulation){
 
         this.crossWalkSimulation = crossWalkSimulation;
     }
+
+    /**
+     * handles the Flashing of the pedestrian light
+     */
     @Override
     public void handleEvent() {
 

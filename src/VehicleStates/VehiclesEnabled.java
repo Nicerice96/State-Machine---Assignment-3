@@ -1,12 +1,16 @@
-package Main;
+package VehicleStates;
 
 import CrossWalkStates.State;
+import Main.CrossWalkSimulation;
 import VehicleStates.GreenState;
 
+/**
+ * Vehicles Enabled Class acts as the entry to the Traffic light states
+ */
 public class VehiclesEnabled implements State {
     CrossWalkSimulation crossWalkSimulation;
 
-    VehiclesEnabled(CrossWalkSimulation crossWalkSimulation){
+    public VehiclesEnabled(CrossWalkSimulation crossWalkSimulation){
         this.crossWalkSimulation = crossWalkSimulation;
 
     }

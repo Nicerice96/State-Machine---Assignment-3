@@ -2,14 +2,25 @@ package CrossWalkStates;
 
 import Main.CrossWalkSimulation;
 
+/**
+ * entry to the Pedestrian states
+ */
 public class pedestriansWalk implements State {
 
     CrossWalkSimulation crossWalkSimulation;
 
+    /**
+     * pedestrianWalk Constructor
+     * @param crossWalkSimulation
+     */
     public pedestriansWalk(CrossWalkSimulation crossWalkSimulation){
 
         this.crossWalkSimulation = crossWalkSimulation;
     }
+
+    /**
+     * handles the pedestrianWalk state
+     */
     @Override
     public void handleEvent() {
 
@@ -21,7 +32,6 @@ public class pedestriansWalk implements State {
         {
 
         }
-
 
         CrossWalkSimulation.signalPedestrians(true);
 
