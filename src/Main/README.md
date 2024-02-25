@@ -29,15 +29,15 @@
 - Simply run the `Main` Class, ensure that an instance of `CrossWalkSimulation` is created and that any "pedestrian" esque thread is started __BEFORE__ the instance of `CrossWalkSimulation` is created
 - There exists a "sample" `Pedestrian` Class which periodically interrupts the State machine, this may be used to show that the state machine _CAN_ handle interrupts. To do this simply uncomment the line in `Main` where the Pedestrian thread is created and started. 
 --------------------------------------------
-# UML Diagrams:
 
-## Sequence Diagram
+# Potential Design Flaws:
+
+- The first defect in the design is that the DONT_WALK signal flashes for a period of 2 seconds with one second on and one second off. This may confuse pedestrians as it does not conform to standard pedestrian crossing signals where the DONT_WALK signal typically remains steady when it's not safe to cross. The defect can be corrected by ensuring that the DONT_WALK signal remains steady when it's not safe to cross, and only starts flashing when the crossing period is about to end.
 
 
-## Class Diagram 
+- The second error in the design is not explicitly handling the case where a pedestrian is waiting while the signal is in the vehiclesGreen or vehiclesGreenInt state. In these states, if a pedestrian starts waiting, the state machine does not transition to a state where it accommodates the pedestrian's request. This means that pedestrians might be left waiting indefinitely without a safe opportunity to cross. This error should be addressed by adding a transition to a state where pedestrians are given the walk signal when they start waiting while the traffic light is green.
 
-------------------------------------------------------
-
+----------------------------
 
 MIT License
 Copyright (c) 2024 [Zarif Khan]
