@@ -7,7 +7,7 @@ import VehicleStates.GreenState;
 /**
  * Vehicles Enabled Class acts as the entry to the Traffic light states
  */
-public class VehiclesEnabled implements State {
+public class VehiclesEnabled extends State {
     CrossWalkSimulation crossWalkSimulation;
 
     public VehiclesEnabled(CrossWalkSimulation crossWalkSimulation){

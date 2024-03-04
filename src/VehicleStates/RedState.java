@@ -7,7 +7,7 @@ import Main.CrossWalkSimulation;
 /**
  * Performs the necessary actions of the "Red" signal on the traffic light
  */
-public class RedState implements State {
+public class RedState extends State {
 
     CrossWalkSimulation crossWalkSimulation;
 

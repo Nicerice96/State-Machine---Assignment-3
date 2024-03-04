@@ -5,7 +5,7 @@ import Main.CrossWalkSimulation;
 /**
  * entry to the Pedestrian states
  */
-public class pedestriansWalk implements State {
+public class pedestriansWalk extends State {
 
     CrossWalkSimulation crossWalkSimulation;
 

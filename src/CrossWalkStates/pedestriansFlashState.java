@@ -7,7 +7,7 @@ import VehicleStates.GreenState;
  * performs the actions of the pedestrian Light
  */
 
-public class pedestriansFlashState implements State {
+public class pedestriansFlashState extends State {
 
     CrossWalkSimulation crossWalkSimulation;
 

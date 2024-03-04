@@ -5,8 +5,8 @@ public class Main {
     public static void main(String[] args) {
 
 
-        Thread pedestrian = new Thread(new Pedestrian());
-        pedestrian.start();
+//        Thread pedestrian = new Thread(new Pedestrian());
+//        pedestrian.start();
 
         CrossWalkSimulation crossWalkSimulation = new CrossWalkSimulation();
 

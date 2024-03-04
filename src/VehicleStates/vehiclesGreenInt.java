@@ -7,7 +7,7 @@ import Main.CrossWalkSimulation;
 /**
  * Performs the necessary actions when the Green state is interrupted
  */
-public class vehiclesGreenInt implements State {
+public class vehiclesGreenInt extends State {
 
     CrossWalkSimulation crossWalkSimulation;
 
@@ -34,7 +34,7 @@ public class vehiclesGreenInt implements State {
             CrossWalkSimulation.buttonPushed = false;
 
             try{
-                Thread.sleep(10 * 1000);
+                Thread.sleep(5 * 1000);
             }
             catch (Exception e)
             {
